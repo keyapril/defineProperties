@@ -1,0 +1,14 @@
+{
+    "name": "defineProperties",
+    "version": "1.0",
+    "desc": "",
+    "cover": "",
+    "tag":"getter setter",
+    "author": {
+        "name": "左莫",
+        "email": "zuomo.xb@alibaba-inc.com",
+        "page": ""
+    },
+    "type": "kissy-gallery",
+    "type-url": "http://gallery.kissyui.com/guide"
+}

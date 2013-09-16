@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>defineProperties的demo</title>
+    <script src="http://g.tbcdn.cn/kissy/k/1.3.0/kissy-min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/kissy/k/1.3.0/css/dpl/base-min.css">
+</head>
+<body>
+<h2>defineProperties的demo</h2>
+
+<script>
+    var S = KISSY;
+    if (S.Config.debug) {
+        var srcPath = "../../../";
+        S.config({
+            packages:[
+                {
+                    name:"gallery",
+                    path:srcPath,
+                    charset:"utf-8",
+                    ignorePackageNameInUri:true
+                }
+            ]
+        });
+    }
+
+    S.use('gallery/defineProperties/1.0/index', function (S, defineProperties) {
+        var data = {
+            str:'str',
+            b:true,
+            arr:[],
+            num:1,
+            obj:{a:1}
+        }
+
+        var props = {}
+
+        for(var prop in data){
+            (function(k){
+                props[k] = {
+                    get:function(){
+                        return data[k]
+                    },
+                    set:function(v){
+                        //做你需要做的set
+                        alert(k+' has set '+v);
+                        data[k] = v
+                    }
+                }
+            })(prop)
+        }
+
+        //拥有getter setter的新对象
+        var newData = defineProperties({},props)
+
+        newData.str= '1';
+        alert(newData.str)
+
+
+        newData.arr = [1,2]
+        alert(newData.arr)
+
+        newData.obj = {a:2}
+
+        alert(newData.obj.a)
+    })
+</script>
+</body>
+</html>
