@@ -35,8 +35,8 @@ KISSY.add(function (S) {
             ].join('\n'), 'VBScript')
 
             defineProperties = function(obj, props) {
-                var className = 'VBClass' + setTimeout('1'),
-                        owner = {}, buffer = []
+                var className = 'VBClass' + setTimeout('1')
+                var buffer = []
                 buffer.push(
                         'Class ' + className,
                         '\tPrivate [__data__], [__proxy__]',
@@ -45,7 +45,6 @@ KISSY.add(function (S) {
                         '\t\tSet [__const__] = Me',
                         '\tEnd Function')
                 for (var name in props) {
-                    owner[name] = true
                     buffer.push(
                             '\tPublic Property Let [' + name + '](val)',
                             '\t\tCall [__proxy__]([__data__], "' + name + '", val)',
